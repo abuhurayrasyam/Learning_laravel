@@ -27,9 +27,3 @@ When project creation complete, then write: php artisan server and press enter.
 Then go to http://127.0.0.1:8000/ and open the project folder with vs code. 
 
 ***Laravel installation complete.***
-
-git add laravel-installation.text
-git commit -m "laravel-installation_by_abu-hurayra-syam"
-git branch -M main
-git remote add origin https://github.com/abuhurayrasyam/Learning_laravel.git
-git push -u origin main
