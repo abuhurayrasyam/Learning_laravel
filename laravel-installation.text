@@ -27,3 +27,5 @@ When project creation complete, then write: php artisan server and press enter.
 Then go to http://127.0.0.1:8000/ and open the project folder with vs code. 
 
 ***Laravel installation complete.***
+
+All laravel package are available hare: https://packagist.org/
