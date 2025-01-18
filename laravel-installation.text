@@ -1,0 +1,35 @@
+At first download XAMPP from https://www.apachefriends.org/download.html and install it on c drive.
+
+Then open XAMPP and click on Apache's Config, then click on PHP (php.ini), then press Ctrl+F, then write extension=zip, then find ;extension=zip, then remove the ; from extension=zip, then save and exit.
+
+Then press windows key and write Environment Variables, then click on Environment Variables Application, then click on Environment Variables, then double click on path, then click on new, then write C:\xampp\php, then click on ok and again click on ok and again click on ok.
+
+Then go to https://getcomposer.org/download/ and click on Composer-Setup.exe and download it, after downloading install it location: C:\xampp\php\php.exe.
+
+When install complete the composer, then open cmd and write composer -v and press enter, then go to https://laravel.com/docs/11.x and copy: composer global require laravel/installer and paste it on cmd and press enter.
+
+When install complete the laravel, then open XAMPP and click on START of Apache and MySQL.
+
+Then go to any drive of computer and create a folder, after creating the folder click on folder location and write cmd and press enter.
+
+When cmd open, then write: laravel new Project_Name (Any project name you can choice depending on project) and then press enter.
+
+Then choice the starter kit and press enter.
+
+Then choice the testing framework: pest and press enter.
+
+Then choice the database and press enter.
+
+Then choice default database update: yes and press enter, [If your ans is no then when laravel installation complete then go to vs code terminal and write: php artisan migrate and press enter].
+
+When project creation complete, then write: php artisan server and press enter.
+
+Then go to http://127.0.0.1:8000/ and open the project folder with vs code. 
+
+***Laravel installation complete.***
+
+git add laravel-installation.text
+git commit -m "laravel-installation_by_abu-hurayra-syam"
+git branch -M main
+git remote add origin https://github.com/abuhurayrasyam/Learning_laravel.git
+git push -u origin main
