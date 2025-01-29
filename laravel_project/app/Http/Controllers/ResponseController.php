@@ -27,7 +27,7 @@ class ResponseController extends Controller
 
         //return response()->file("pictures/people.png"); //view a file
 
-        //return response()->download("pictures/people.png"); //download a file
+        //return response()->download("pictures/islam.jpg"); //download a file
 
         //return view('pages/home'); //view a blade file
     }

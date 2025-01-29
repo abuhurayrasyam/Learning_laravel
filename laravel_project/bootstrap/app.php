@@ -11,7 +11,10 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        //
+        //For Practice Purpose Off The CSRF
+        $middleware->validateCsrfTokens([
+            '*'
+        ]); //When Practice Complete Comment This Line
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
