@@ -1,31 +1,52 @@
 Backend
--Route (routes) "Defines the URL structure of your application and maps URLs to specific controllers or actions."
+-Route (routes)
+[Definition:- Defines the URL structure of your application and maps URLs to specific controllers or actions.]
   All Route are set in web.php
+  * Controller Connection Format:- use App\Http\Controllers\ControllerName;
+  * Route Writing Format:- Route::get('/path', [ControllerName::class, 'Controllers_Function_Name']);
+  * Route Writing Format (For pass a parameter):- Route::get('/path/{parameter_name}', [ControllerName::class, 'Controllers_Function_Name']);
 
--Controller (app/http\Controllers) "Acts as the intermediary between models and views, handling user requests and performing business logic."
-  To Make a Controller Command is: php artisan make:controller DemoController (DemoController mean Any Controller Name).
+-Controller (app/http\Controllers) "It needs to be connected to Route"
+[Definition:- Acts as the intermediary between models and views, user request at first come on controller.]
+  To Make a Controller Command is:- php artisan make:controller DemoController (DemoController mean Any Controller Name).
+  * View/Blade Connection Format:- 
+      function functionName(Request $request){
+        return view('folder.filename');
+      }
+
+In Controller we write:- associative_array.
+  * To Pass a Value/Variable from controller to blade file use this format:-
+    function functionName(Request $request){
+        return view('folder.filename', ['key'=>'value/variable']); [Note:- if variable pass so no need '' and for accessing the value/variable in blade format is:- {{value/variable}} ]
+      }
 
 Frontend
--View & Blade (resources/views) "Displays data to the user in a structured format. & Laravel's templating engine, designed to make writing views easier and more dynamic."
-  To Make a view/blade Command is: php artisan make:view folder.filename
-  -Sub View "Sub views are smaller, reusable view components that can be included within other views, including the master layout or other sub views. They help in breaking down the UI into modular components."
-    To Connect Sub View File use This: @include('folder.filename')
-  -Master Layout "A master layout, also known as a "layout template" or "base template," serves as the foundation for your Blade views. It defines the common structure and sections of your application's pages, such as headers, footers, and navigation bars."
+-View & Blade (resources/views) "It needs to be connected to Controller"
+[Definition:- View Displays data to the user in a structured format. & Blade Laravel's templating engine, designed to make writing views easier and more dynamic.]
+  To Make a view/blade Command is:- php artisan make:view folder.filename
 
-    To Write Master Layout use This:
+  --Sub View 
+  [Definition:- Sub views are smaller, reusable view components that can be included within other views, including the master layout or other sub views. They help in breaking down the UI into modular components.]
+    To Connect Sub View File use This:- @include('folder.filename')
+
+  --Master Layout 
+  [Definition:- A master layout, also known as a "layout template" or "base template," serves as the foundation for your Blade views. It defines the common structure and sections of your application's pages, such as headers, footers, and navigation bars.]
+
+    To Write Master Layout use This:-
     @include('folder.filename')
     @yield('content')
     @include('foldername.filename')
 
-    To Connect Master Layout use This:
-    @extends('folder.filename') [Note: Write Master Layout folder and file]
+    To Connect Master Layout use This:-
+    @extends('folder.filename') [Note: Write here Master Layout's folder and file name]
     @section('content') [Note: yield('name') write on section('name')]
-      Write here This Pages Codes.
+    ---Write here This Pages Codes.---
     @endsection
 
+In Blade we write:- @if-@else, @switch-@case, @for_loop, @foreach_loop.
 
--Asset (public) "Static files like CSS, JavaScript, and images used in the frontend."
-  Example: css, js, img, videos, files and etc.
-  To Link a Asset File Use it: {{asset('folder/file')}}
+-Asset (public) "It needs to be connected to Blade"
+[Definition:- Static files like CSS, JavaScript, images, videos and files used in the frontend.]
+  * To Link a Asset File Use it:- {{asset('folder/file')}} [Note:- its Use in Blade File]
 
 -
