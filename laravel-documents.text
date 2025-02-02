@@ -1,0 +1,31 @@
+Backend
+-Route (routes) "Defines the URL structure of your application and maps URLs to specific controllers or actions."
+  All Route are set in web.php
+
+-Controller (app/http\Controllers) "Acts as the intermediary between models and views, handling user requests and performing business logic."
+  To Make a Controller Command is: php artisan make:controller DemoController (DemoController mean Any Controller Name).
+
+Frontend
+-View & Blade (resources/views) "Displays data to the user in a structured format. & Laravel's templating engine, designed to make writing views easier and more dynamic."
+  To Make a view/blade Command is: php artisan make:view folder.filename
+  -Sub View "Sub views are smaller, reusable view components that can be included within other views, including the master layout or other sub views. They help in breaking down the UI into modular components."
+    To Connect Sub View File use This: @include('folder.filename')
+  -Master Layout "A master layout, also known as a "layout template" or "base template," serves as the foundation for your Blade views. It defines the common structure and sections of your application's pages, such as headers, footers, and navigation bars."
+
+    To Write Master Layout use This:
+    @include('folder.filename')
+    @yield('content')
+    @include('foldername.filename')
+
+    To Connect Master Layout use This:
+    @extends('folder.filename') [Note: Write Master Layout folder and file]
+    @section('content') [Note: yield('name') write on section('name')]
+      Write here This Pages Codes.
+    @endsection
+
+
+-Asset (public) "Static files like CSS, JavaScript, and images used in the frontend."
+  Example: css, js, img, videos, files and etc.
+  To Link a Asset File Use it: {{asset('folder/file')}}
+
+-
