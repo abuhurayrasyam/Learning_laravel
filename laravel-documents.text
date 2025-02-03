@@ -20,6 +20,49 @@ In Controller we write:- associative_array.
         return view('folder.filename', ['key'=>'value/variable']); [Note:- if variable pass so no need '' and for accessing the value/variable in blade format is:- {{value/variable}} ]
       }
 
+-Middleware. A middleware have 2 Types, 1. Build-in 2. Custom (App/Http/Middleware) "It needs to be connected to Route for single/group and for all routes it need to be connected to app.php (bootstrap/app.php)"
+[Definition:- Middleware is a function like controller and it's run first. When you give a request to your browser it at first go to controller but the middleware seat at center of Browser and controller.]
+To Make a Custom Middleware Command is:- php artisan make:middleware DemoMiddleware (DemoMiddleware mean Any Middleware Name).
+
+Middleware in Request:
+  --Route Protected, without login not seen the url page. (laravel have a build-in middleware for this)
+    * For Single Route:- After routes remove the ; and add this:- 
+      ->middleware('auth'); [Note: auth is a build-in middleware for login check]
+    * For Group Route:-
+      Route::middleware('auth')->group(function(){
+        //write routes here...
+      });
+
+  --From 1 IP in a minute not request over 3 for safety from bot/DoS/DDoS. (laravel have a build-in middleware for this)
+    * For Single Route:- After routes remove the ; and add this:- 
+      ->middleware('throttle:2,1'); [Note: throttle is a build-in middleware for limited request check and after: its request number, its time]
+    * For Group Route:- 
+      Route::middleware(['auth', 'throttle:2,1'])->group(function(){
+        //write routes here...
+      }); 
+    [Note:- there are two middlewares]
+
+  --Route Accessible from just Fixed Country. (For this middleware we need to create a Custom middleware)
+    * Custom Middleware code for this:-
+      $country = $request->header('cf-ipcountry');
+        if($country != 'BD'){
+            return response('Access Denied', 403);
+        }
+        return $next($request); 
+    [Note:- this middleware connected to global middleware in app.php, the Connection process is:- $middleware->append(DemoMiddleware::class); in DemoMiddleware's place write the custom middleware name]
+  
+  --Admin Panel not Accessible without fixed ip [Currently not known]
+
+Middleware in Response:
+  --Show the Developer in name in every routes - inspect - network - headers. (For this middleware we need to create a Custom middleware)
+    * Custom Middleware code for this:-
+        $response = $next($request);
+        $response->headers->set('X-Developer', 'Abu Hurayra Syam');
+        return $response;
+    [Note:- this middleware connected to global middleware in app.php, the Connection process is:- $middleware->append(DemoMiddleware::class); in DemoMiddleware's place write the custom middleware name]
+
+  --Browse From Any country and the content will translate in their own language. [Currently not known]
+
 Frontend
 -View & Blade (resources/views) "It needs to be connected to Controller"
 [Definition:- View Displays data to the user in a structured format. & Blade Laravel's templating engine, designed to make writing views easier and more dynamic.]
@@ -48,5 +91,3 @@ In Blade we write:- @if-@else, @switch-@case, @for_loop, @foreach_loop.
 -Asset (public) "It needs to be connected to Blade"
 [Definition:- Static files like CSS, JavaScript, images, videos and files used in the frontend.]
   * To Link a Asset File Use it:- {{asset('folder/file')}} [Note:- its Use in Blade File]
-
--
